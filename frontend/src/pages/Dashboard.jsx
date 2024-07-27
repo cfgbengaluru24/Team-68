@@ -7,7 +7,7 @@ const Dashboard = () => {
   const [schemes, setSchemes] = useState([]);
 
   const handleSearch = async (formData) => {
-    const response = await searchSchemes(formData);
+    const response = await fetch()
     setSchemes(response.data);
   };
 
