@@ -3,7 +3,7 @@ const Scheme = require('../dbModels/Schemes');
 exports.createScheme = async (req, res) => {
     try {
         const { tags, description, date , endDate , heading  , gender , ageLimit } = req.body;
-
+        console.log(req.body);
         const newScheme = new Scheme({
             tags,
             description,

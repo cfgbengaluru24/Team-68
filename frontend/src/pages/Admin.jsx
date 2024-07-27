@@ -9,8 +9,7 @@ const Admin = () => {
     heading: '',
     endDate: '',
     ageLimit: '',
-    gender: '',
-    summary: ''
+    gender: ''
   });
 
   const handleChange = (e) => {
@@ -21,10 +20,19 @@ const Admin = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // handle form submission logic
     console.log(formData);
+    const response = await fetch('http://localhost:4000/api/schemes/schemes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+    const result = await response.json();
+    console.log(result);
   };
 
   return (
@@ -42,7 +50,6 @@ const Admin = () => {
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
-        <textarea name="summary" value={formData.summary} onChange={handleChange} placeholder="Summary"></textarea>
         <button type="submit">Submit</button>
       </form>
     </div>
