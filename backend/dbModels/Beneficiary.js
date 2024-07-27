@@ -28,12 +28,12 @@ const beneSchema = new Schema({
     },
     inSchool: {
         type: String,
-        enumL:['yes' , 'no'],
+        enum:['yes' , 'no'],
         required: true
     },
     isWorking: {
         type: String,
-        enumL:['yes' , 'no'],
+        enum:['yes' , 'no'],
         required: true
     },
     schemeName: [{
@@ -41,12 +41,12 @@ const beneSchema = new Schema({
     }],
     aadhar: {
         type: String,
-        enumL:['yes' , 'no'],
+        enum:['yes' , 'no'],
         default: false
     },
     ration: {
         type: String,
-        enumL:['yes' , 'no'],
+        enum:['yes' , 'no'],
         default: false
     }
 });

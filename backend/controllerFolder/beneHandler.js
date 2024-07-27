@@ -3,7 +3,8 @@ const Scheme = require('../dbModels/Schemes');
 // Create a new bene user
 exports.createBeneUser = async (req, res) => {
     try {
-        const { name, gender, contactno, address, pincode, age, inSchool, isWorking , aadhar, ration } = req.body;
+        console.log(req.body);
+        const { name , gender, contactno, address, pincode, age, inSchool, isWorking , aadhar, ration } = req.body;
         const newBeneUser = new BeneUser({
             name,
             gender,
