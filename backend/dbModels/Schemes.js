@@ -16,6 +16,14 @@ const schemeSchema = new Schema({
     }],
     endDate: {
         type: Date
+    },
+    ageLimit : {
+        type:Number
+    },
+    gender:{
+        type:String,
+        enum:["Both" , "Male" , "Female"],
+        required:true
     }
 });
 module.exports = mongoose.model('Schemes', schemeSchema);
