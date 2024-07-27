@@ -10,8 +10,8 @@ const Registration = () => {
     age: 0,
     inSchool: '',
     isWorking: '',
-    aadharCard: '',
-    rationCard: ''
+    aadhar: '',
+    ration: ''
   });
 
   const handleChange = (e) => {
@@ -24,10 +24,19 @@ const Registration = () => {
 
   // name, gender, contactno, address, pincode, age, ininSchool, isisWorking, schemeName , aadhar, ration
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // handle form submission logic
 
+    const response = await fetch('http://localhost:4000/api/beneusers/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+    const result = await response.json();
+    console.log(result);
   };
 
   return (
@@ -46,8 +55,8 @@ const Registration = () => {
       <input type="text" name="inSchool" value={formData.inSchool} onChange={handleChange} placeholder="inSchool" />
       <input type="text" name="isWorking" value={formData.isWorking} onChange={handleChange} placeholder="Working" />
       <input type="text" name="schemeName" value={formData.schemeName} onChange={handleChange} placeholder="Scheme Name" />
-      <input type="text" name="aadharCard" value={formData.aadharCard} onChange={handleChange} placeholder="Aadhar Card" />
-      <input type="text" name="rationCard" value={formData.rationCard} onChange={handleChange} placeholder="Ration Card" />
+      <input type="text" name="aadhar" value={formData.aadhar} onChange={handleChange} placeholder="Aadhar Card" />
+      <input type="text" name="ration" value={formData.ration} onChange={handleChange} placeholder="Ration Card" />
       <button type="submit">Register</button>
     </form>
   );
