@@ -11,9 +11,10 @@ const schemeSchema = new Schema({
     date: {
         type: Date
     },
-    eligibilityCriteria: [{
-        type: String
-    }],
+    heading:{
+        type:String,
+        required:true
+    },
     endDate: {
         type: Date
     },

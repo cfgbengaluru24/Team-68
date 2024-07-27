@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import BeneficiaryForm from '../components/BeneficiaryForm';
 import SchemeList from '../components/SchemeList';
-import { searchSchemes } from '../services/api';
 
 const Dashboard = () => {
   const [schemes, setSchemes] = useState([]);
 
   const handleSearch = async (formData) => {
-    const response = await fetch()
+    const response = await fetch('http://localhost:4000/api/schemes/schemes', {
+      method: 'GET',
+    });
     setSchemes(response.data);
   };
 

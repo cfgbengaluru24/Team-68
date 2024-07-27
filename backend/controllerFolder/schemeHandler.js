@@ -2,13 +2,13 @@ const Scheme = require('../dbModels/Schemes');
 
 exports.createScheme = async (req, res) => {
     try {
-        const { tags, description, date , endDate , gender , ageLimit } = req.body;
+        const { tags, description, date , endDate , heading  , gender , ageLimit } = req.body;
 
         const newScheme = new Scheme({
             tags,
             description,
             date,
-            endDate, gender , ageLimit
+            endDate, gender , ageLimit , heading
         });
 
         const savedScheme = await newScheme.save();
@@ -41,11 +41,11 @@ exports.getSchemeById = async (req, res) => {
 
 exports.updateScheme = async (req, res) => {
     try {
-        const { tags, description, date , endDate } = req.body;
+        const { tags, description, date , heading , endDate } = req.body;
 
         const updatedScheme = await Scheme.findByIdAndUpdate(
             req.params.id,
-            { tags, description, date , endDate },
+            { tags, description, date , heading , endDate },
             { new: true }
         );
 
