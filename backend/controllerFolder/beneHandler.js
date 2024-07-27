@@ -13,7 +13,7 @@ exports.createBeneUser = async (req, res) => {
             age,
             inSchool,
             isWorking,
-            schemeName, aadhar , pan ,
+            schemeName, aadhar ,
             ration
         });
 
@@ -59,10 +59,10 @@ exports.getBeneUserByPhoneNumber = async (req, res) => {
 // Update a bene user by ID
 exports.updateBeneUser = async (req, res) => {
     try {
-        const { name, gender, contactno, address, pincode, age, inSchool, isWorking, schemeName, aadhar, pan, ration } = req.body;
+        const { name, gender, contactno, address, pincode, age, inSchool, isWorking, schemeName, aadhar, ration } = req.body;
         const updatedBeneUser = await BeneUser.findByIdAndUpdate(
             req.params.id,
-            { name, gender, contactno, address, pincode, age, inSchool, isWorking, schemeName, aadhar, pan, ration },
+            { name, gender, contactno, address, pincode, age, inSchool, isWorking, schemeName, aadhar,ration },
             { new: true }
         );
         if (!updatedBeneUser) {
