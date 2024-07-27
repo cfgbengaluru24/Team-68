@@ -1,0 +1,52 @@
+import React, { useState } from 'react';
+import './Admin.css'; // Import custom CSS for styling
+
+const Admin = () => {
+  const [formData, setFormData] = useState({
+    tags: '',
+    description: '',
+    date: '',
+    heading: '',
+    endDate: '',
+    ageLimit: '',
+    gender: '',
+    summary: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle form submission logic
+    console.log(formData);
+  };
+
+  return (
+    <div className="admin-page">
+      <form onSubmit={handleSubmit} className="admin-form">
+        <input type="text" name="tags" value={formData.tags} onChange={handleChange} placeholder="Tags" />
+        <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Description"></textarea>
+        <input type="date" name="date" value={formData.date} onChange={handleChange} placeholder="Date" />
+        <input type="text" name="heading" value={formData.heading} onChange={handleChange} placeholder="Heading" />
+        <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} placeholder="End Date" />
+        <input type="number" name="ageLimit" value={formData.ageLimit} onChange={handleChange} placeholder="Age Limit" />
+        <select name="gender" value={formData.gender} onChange={handleChange}>
+          <option value="">Select Gender</option>
+          <option value="both">Both</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <textarea name="summary" value={formData.summary} onChange={handleChange} placeholder="Summary"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default Admin;

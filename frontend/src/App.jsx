@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Registration from './components/Registration';
+import Admin from './pages/Admin';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/registration" element={<Registration />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </div>
     </div>
