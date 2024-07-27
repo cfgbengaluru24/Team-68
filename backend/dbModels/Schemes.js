@@ -23,7 +23,7 @@ const schemeSchema = new Schema({
     },
     gender:{
         type:String,
-        enum:["Both" , "Male" , "Female"],
+        enum:["Common" , "Male" , "Female"],
         required:true
     }
 });
