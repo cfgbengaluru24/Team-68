@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Registration = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     gender: '',
@@ -27,8 +29,9 @@ const Registration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // handle form submission logic
+    console.log(formData);
 
-    const response = await fetch('http://localhost:4000/api/beneusers/', {
+    const response = await fetch('http://localhost:4000/api/beneusers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -37,6 +40,9 @@ const Registration = () => {
     });
     const result = await response.json();
     console.log(result);
+
+    navigate('/');
+
   };
 
   return (
@@ -54,7 +60,6 @@ const Registration = () => {
       <input type="number" name="age" value={formData.age} onChange={handleChange} placeholder="Age" />
       <input type="text" name="inSchool" value={formData.inSchool} onChange={handleChange} placeholder="inSchool" />
       <input type="text" name="isWorking" value={formData.isWorking} onChange={handleChange} placeholder="Working" />
-      <input type="text" name="schemeName" value={formData.schemeName} onChange={handleChange} placeholder="Scheme Name" />
       <input type="text" name="aadhar" value={formData.aadhar} onChange={handleChange} placeholder="Aadhar Card" />
       <input type="text" name="ration" value={formData.ration} onChange={handleChange} placeholder="Ration Card" />
       <button type="submit">Register</button>

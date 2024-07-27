@@ -18,29 +18,28 @@ const Dashboard = () => {
       }
   
       const respData = await response.json();
-      console.log("Response is : ", respData);
+      console.log("Response is:", respData);
   
-      // Assuming respData.data is an array of schemes
-      const finalData = respData.data || [];
-      console.log("Form Data:", formData);
-      console.log("Scheme Data:", finalData);
-      
+      // Ensure respData.data is an array of schemes
+      const finalData = Array.isArray(respData.data) ? respData.data : [];
+  
       // Filter schemes based on formData
       const filteredSchemes = finalData.filter((scheme) => {
-        return (
-          (formData.age === '' || scheme.age <= parseInt(formData.age, 10)) &&
-          (formData.gender === '' || scheme.gender === formData.gender) &&
-          (formData.state === '' || scheme.state.toLowerCase() === formData.state.toLowerCase()) &&
-          (formData.schemeType === '' || scheme.tags.toLowerCase() === formData.schemeType.toLowerCase())
-        );
+        const matchesAge = formData.age === '' || parseInt(scheme.ageLimit, 10) >= parseInt(formData.age, 10);
+        const matchesGender = formData.gender === '' || scheme.gender === formData.gender;
+        const matchesState = formData.state === '' || (scheme.state && scheme.state.toLowerCase() === formData.state.toLowerCase());
+        const matchesSchemeType = formData.schemeType === '' || (scheme.tags && scheme.tags.toLowerCase() === formData.schemeType.toLowerCase());
+  
+        return matchesAge && matchesGender && matchesState && matchesSchemeType;
       });
   
-      console.log(filteredSchemes);
+      console.log("Filtered Schemes:", filteredSchemes);
       setSchemes(filteredSchemes);
     } catch (error) {
       console.error('Error fetching or filtering schemes:', error);
     }
   };
+  
   
 
   const handleNavigate = () => {
