@@ -1,4 +1,4 @@
-const FLWUser = require('../dbModels/FLWUser');
+const FLWUser = require('../dbModels/FLW');
 
 // Create a new FLW user
 exports.createFLWUser = async (req, res) => {

@@ -16,6 +16,15 @@ mongoose
     console.error("MongoDB connection error:", error)
   );
 
+  const schemeRoutes = require('./routes/schemeRoutes');
+  app.use('/api/schemes', schemeRoutes);
+  const beneRoutes = require('./routes/beneRoutes');
+  app.use('/api/beneusers', beneRoutes);
+  const adminRoutes = require('./routes/adminRoutes');
+  app.use('/api/admins', adminRoutes);
+  const flwRoutes = require('./routes/flwRoutes');
+  app.use('/api/flwusers', flwRoutes);
+
 app.listen(4000 , () => {
     console.log("Server running at port 4000");
 })
