@@ -38,13 +38,16 @@ const beneSchema = new Schema({
         type: String
     }],
     aadhar: {
-        type: String
+        type: Boolean,
+        default: false
     },
     pan: {
-        type: String
+        type: Boolean,
+        default: false
     },
     ration: {
-        type: String
+        type: Boolean,
+        default: false
     }
 });
 module.exports = mongoose.model('BeneUser', beneSchema);
