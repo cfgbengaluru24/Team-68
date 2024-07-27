@@ -41,10 +41,6 @@ const beneSchema = new Schema({
         type: Boolean,
         default: false
     },
-    pan: {
-        type: Boolean,
-        default: false
-    },
     ration: {
         type: Boolean,
         default: false
