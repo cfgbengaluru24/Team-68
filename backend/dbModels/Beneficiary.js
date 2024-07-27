@@ -27,22 +27,26 @@ const beneSchema = new Schema({
         required: true
     },
     inSchool: {
-        type: Boolean,
+        type: String,
+        enum:['yes' , 'no'],
         required: true
     },
     isWorking: {
-        type: Boolean,
+        type: String,
+        enum:['yes' , 'no'],
         required: true
     },
     schemeName: [{
         type: String
     }],
     aadhar: {
-        type: Boolean,
+        type: String,
+        enum:['yes' , 'no'],
         default: false
     },
     ration: {
-        type: Boolean,
+        type: String,
+        enum:['yes' , 'no'],
         default: false
     }
 });
