@@ -9,7 +9,7 @@ const SchemeList = ({ schemes }) => {
   return (
     <div className="scheme-list">
       {schemes.map((scheme) => (
-        <SchemeBlock key={scheme.id} scheme={scheme} />
+        <SchemeBlock key={scheme._id} scheme={scheme} />
       ))}
     </div>
   );
