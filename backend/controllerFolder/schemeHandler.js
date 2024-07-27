@@ -21,7 +21,7 @@ exports.createScheme = async (req, res) => {
 exports.getSchemes = async (req, res) => {
     try {
         const schemes = await Scheme.find();
-        res.status(200).json(schemes);
+        res.status(200).json({ data : schemes});
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
