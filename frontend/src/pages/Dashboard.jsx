@@ -12,44 +12,42 @@ const Dashboard = () => {
       const response = await fetch('http://localhost:4000/api/schemes/schemes', {
         method: 'GET',
       });
-  
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-  
+
       const respData = await response.json();
       console.log("Response is:", respData);
-  
-      // Ensure respData.data is an array of schemes
+
       const finalData = Array.isArray(respData.data) ? respData.data : [];
-  
-      // Filter schemes based on formData
+
       const filteredSchemes = finalData.filter((scheme) => {
         const matchesAge = formData.age === '' || parseInt(scheme.ageLimit, 10) >= parseInt(formData.age, 10);
         const matchesGender = formData.gender === '' || scheme.gender === formData.gender;
         const matchesState = formData.state === '' || (scheme.state && scheme.state.toLowerCase() === formData.state.toLowerCase());
         const matchesSchemeType = formData.schemeType === '' || (scheme.tags && scheme.tags.toLowerCase() === formData.schemeType.toLowerCase());
-  
+
         return matchesAge && matchesGender && matchesState && matchesSchemeType;
       });
-  
+
       console.log("Filtered Schemes:", filteredSchemes);
       setSchemes(filteredSchemes);
     } catch (error) {
       console.error('Error fetching or filtering schemes:', error);
     }
   };
-  
-  
 
-  const handleNavigate = () => {
-    navigate('/registration');
+  const handleNavigate = (path) => {
+    navigate(path);
   };
 
   return (
     <div className="dashboard">
       <BeneficiaryForm onSearch={handleSearch} />
-      <button onClick={handleNavigate}>Go to Registration</button>
+      <button onClick={() => handleNavigate('/registration')}>Go to Registration</button>
+      <button onClick={() => handleNavigate('/form-one')}>Go to Form One</button>
+      <button onClick={() => handleNavigate('/form-two')}>Go to Form Two</button>
       <SchemeList schemes={schemes} />
     </div>
   );
