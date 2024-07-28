@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './Admin.css'; // Import custom CSS for styling
+import { useNavigate } from 'react-router-dom';
 // import AdminHeader from '../components/AdminDash';
 
 const Admin = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     tags: '',
     description: '',
@@ -34,6 +36,7 @@ const Admin = () => {
     });
     const result = await response.json();
     console.log(result);
+    navigate('/');
   };
 
   return (
