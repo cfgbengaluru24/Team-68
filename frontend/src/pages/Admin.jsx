@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Admin.css'; // Import custom CSS for styling
+// import AdminHeader from '../components/AdminDash';
 
 const Admin = () => {
   const [formData, setFormData] = useState({
@@ -46,7 +47,7 @@ const Admin = () => {
         <input type="number" name="ageLimit" value={formData.ageLimit} onChange={handleChange} placeholder="Age Limit" />
         <select name="gender" value={formData.gender} onChange={handleChange}>
           <option value="">Select Gender</option>
-          <option value="Both">Both</option>
+          <option value="Common">Both</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>

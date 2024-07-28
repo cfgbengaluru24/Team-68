@@ -30,7 +30,7 @@ const Dashboard = () => {
         //const matchesState = formData.state === '' || (scheme.state && scheme.state.toLowerCase() === formData.state.toLowerCase());
         const matchesSchemeType = formData.schemeType === '' || (scheme.tags && scheme.tags.toLowerCase() === formData.schemeType.toLowerCase());
   
-        return matchesAge && matchesGender && matchesState && matchesSchemeType;
+        return matchesAge && matchesGender && matchesSchemeType;
       });
   
       console.log("Filtered Schemes:", filteredSchemes);

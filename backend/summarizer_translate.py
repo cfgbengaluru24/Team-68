@@ -43,11 +43,11 @@ def extract_features(text):
 # Streamlit App
 st.title("Text Translation and Feature Extraction App")
 
-
+# File uploader
 uploaded_file = st.file_uploader("Choose a text file", type="txt")
 
 if uploaded_file is not None:
-    
+    # Read the uploaded file
     try:
         text = uploaded_file.read().decode("utf-8")
         if len(text.strip()) == 0:
