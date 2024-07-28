@@ -20,14 +20,16 @@ const FormOne = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5173/api/beneusers/update', {
+      const response = await fetch('http://localhost:4000/api/beneusers/update', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
-
+      console.log(response);
+      const respData = await response.json();
+      console.log(respData);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

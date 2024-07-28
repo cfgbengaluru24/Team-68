@@ -19,7 +19,7 @@ const FormTwo = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/api/schemes/details', {
+      const response = await fetch('http://localhost:4000/api/beneusers/findOne', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,6 +32,7 @@ const FormTwo = () => {
       }
 
       const result = await response.json();
+      console.log(result);
       setData(result.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -71,15 +72,15 @@ const FormTwo = () => {
             <tr key={index}>
               <td>{item.name}</td>
               <td>{item.gender}</td>
-              <td>{item.phoneNumber}</td>
+              <td>{item.contactno}</td>
               <td>{item.address}</td>
-              <td>{item.pinCode}</td>
+              <td>{item.pincode}</td>
               <td>{item.age}</td>
-              <td>{item.school}</td>
-              <td>{item.working}</td>
-              <td>{item.schemeName}</td>
-              <td>{item.aadharCard}</td>
-              <td>{item.rationCard}</td>
+              <td>{item.inSchool}</td>
+              <td>{item.isWorking}</td>
+              <td>{ item.schemeName.length===0 ? <p>Pending</p> : item.schemeName}</td>
+              <td>{item.aadhar}</td>
+              <td>{item.ration}</td>
             </tr>
           ))}
         </tbody>

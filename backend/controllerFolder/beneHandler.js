@@ -52,7 +52,7 @@ exports.getBeneUserByPhoneNumber = async (req, res) => {
         if (!beneUser) {
             return res.status(404).json({ message: 'Bene User not found' });
         }
-        res.status(200).json(beneUser);
+        res.status(200).json( {data : beneUser});
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -89,14 +89,16 @@ exports.deleteBeneUser = async (req, res) => {
     }
 };
 exports.updateSchemesAvailed = async(req , res) => {
+    console.log(req.body);
     const {newScheme , phoneNumber} = req.body;
     try{
-        const currUser = await BeneUser.find({contactno : phoneNumber});
-
+        const currUser = await BeneUser.findOne({contactno : phoneNumber});
+        console.log(currUser);
         if(!currUser){
             res.status(400).json({message:"User not found"});
         }
-        const updatedUser = await BeneUser.findByIdAndUpdate(currUser._id ,  { $push: { emails: newEmail } } , {new: true} );
+        const updatedUser = await BeneUser.findByIdAndUpdate(currUser._id ,  { $push: { schemeName: newScheme } } , {new: true} );
+        console.log(updatedUser);
         res.status(200).json(updatedUser);
     }
     catch(error){
