@@ -10,5 +10,6 @@ router.put('/:id', beneController.updateBeneUser);
 router.delete('/:id', beneController.deleteBeneUser);
 router.get('/phone' , beneController.getBeneUserByPhoneNumber);
 router.post('/update' , beneController.updateSchemesAvailed);
+router.post('/findOne' , beneController.getBeneUserByPhoneNumber)
 
 module.exports = router;
