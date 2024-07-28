@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './Form.css'; // Add your styling here
+import { useNavigate } from 'react-router-dom';
 
 const FormOne = () => {
   const [formData, setFormData] = useState({
     phoneNumber: '',
     newScheme: ''
   });
+
+  const navigate = useNavigate();
 
   const [data, setData] = useState([]);
 
@@ -34,8 +37,9 @@ const FormOne = () => {
         throw new Error('Network response was not ok');
       }
 
-      const result = await response.json();
-      setData(result.data);
+      // const result = await response.json();
+      navigate('/');
+      // setData(result.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -60,24 +64,6 @@ const FormOne = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Phone Number</th>
-            <th>Schemes Availed</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.phoneNumber}</td>
-              <td>{item.schemeName}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 };
