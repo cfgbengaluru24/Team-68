@@ -47,16 +47,25 @@ exports.getBeneUserById = async (req, res) => {
 };
 exports.getBeneUserByPhoneNumber = async (req, res) => {
     try {
-        const {phoneNumber} = req.body;
-        const beneUser = await BeneUser.find({contactno : phoneNumber});
-        if (!beneUser) {
+        const { phoneNumber } = req.body;
+
+        let beneUser;
+        if (!phoneNumber || phoneNumber.length === 0) {
+            beneUser = await BeneUser.find({});
+        } else {
+            beneUser = await BeneUser.find({ contactno: phoneNumber });
+        }
+
+        if (!beneUser || beneUser.length === 0) {
             return res.status(404).json({ message: 'Bene User not found' });
         }
-        res.status(200).json( {data : beneUser});
+
+        res.status(200).json({ data: beneUser });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 };
+
 // Update a bene user by ID
 exports.updateBeneUser = async (req, res) => {
     try {

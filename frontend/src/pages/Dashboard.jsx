@@ -46,8 +46,8 @@ const Dashboard = () => {
     <div className="dashboard">
       <BeneficiaryForm onSearch={handleSearch} />
       <button onClick={() => handleNavigate('/registration')}>Go to Registration</button>
-      <button onClick={() => handleNavigate('/form-one')}>Go to Form One</button>
-      <button onClick={() => handleNavigate('/form-two')}>Go to Form Two</button>
+      <button onClick={() => handleNavigate('/form-one')}>Update Availed Scheme</button>
+      <button onClick={() => handleNavigate('/form-two')}>Beneficiary Details</button>
       <SchemeList schemes={schemes} />
     </div>
   );
