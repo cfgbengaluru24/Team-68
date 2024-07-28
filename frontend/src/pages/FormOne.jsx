@@ -4,7 +4,7 @@ import './Form.css'; // Add your styling here
 const FormOne = () => {
   const [formData, setFormData] = useState({
     phoneNumber: '',
-    schemeName: ''
+    newScheme: ''
   });
 
   const [data, setData] = useState([]);
@@ -20,7 +20,7 @@ const FormOne = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/api/schemes/phone', {
+      const response = await fetch('http://localhost:5173/api/beneusers/update', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,8 +51,8 @@ const FormOne = () => {
         />
         <input
           type="text"
-          name="schemeName"
-          value={formData.schemeName}
+          name="newScheme"
+          value={formData.newScheme}
           onChange={handleChange}
           placeholder="Scheme Name"
         />
