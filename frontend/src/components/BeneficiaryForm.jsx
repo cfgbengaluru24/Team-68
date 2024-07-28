@@ -28,7 +28,7 @@ const BeneficiaryForm = ({ onSearch }) => {
         <option value="">Select Gender</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
-        <option value="Both">Both</option>
+        <option value="Both">Common</option>
       </select>
       {/* <input type="text" name="state" value={formData.state} onChange={handleChange} placeholder="State" /> */}
       <input type="text" name="schemeType" value={formData.schemeType} onChange={handleChange} placeholder="Scheme Type" />
