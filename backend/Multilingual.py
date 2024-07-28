@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1laB4Yqv2aai8SHcEna1DqYvBg6J1wXgW
 """
 
-pip install deep-translator
+#pip install deep-translator
 
 from deep_translator import GoogleTranslator
 

@@ -24,11 +24,11 @@ const Dashboard = () => {
 
       const filteredSchemes = finalData.filter((scheme) => {
         const matchesAge = formData.age === '' || parseInt(scheme.ageLimit, 10) >= parseInt(formData.age, 10);
-        const matchesGender = formData.gender === '' || scheme.gender === formData.gender;
-        const matchesState = formData.state === '' || (scheme.state && scheme.state.toLowerCase() === formData.state.toLowerCase());
+        const matchesGender = formData.gender === '' || scheme.gender.toLowerCase() === formData.gender.toLowerCase();
+        //const matchesState = formData.state === '' || (scheme.state && scheme.state.toLowerCase() === formData.state.toLowerCase());
         const matchesSchemeType = formData.schemeType === '' || (scheme.tags && scheme.tags.toLowerCase() === formData.schemeType.toLowerCase());
-
-        return matchesAge && matchesGender && matchesState && matchesSchemeType;
+  
+        return matchesAge && matchesGender && matchesSchemeType;
       });
 
       console.log("Filtered Schemes:", filteredSchemes);
